@@ -1,0 +1,7 @@
+print("When using quotes, \" or ' in output.. \nyou must use the escape character '\\'")
+print()
+print("if you want to use '\\' in output,\nyou need to escape the escape character..\ne.g., \\\\ ")
+print()
+print()
+print()
+print("\"\"\\_('>')_/\"\"")
