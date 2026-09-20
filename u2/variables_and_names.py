@@ -33,4 +33,4 @@ print(f"with {round(games_remaining)} games remaining and an average of {round(h
 print(f"it is {can_break_record} that he is on pace to break the record.")
 print(f"{player} is projected to hit {round(projected_home_runs)} home runs this season.")
 
-# games_remaining is correct by definition (total - played = remaining) regardless of what the actual numbers are
+# games_remaining is correct by the definition (total - played = remaining) regardless of what the actual numbers are
