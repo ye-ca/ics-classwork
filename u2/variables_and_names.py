@@ -4,11 +4,11 @@ team = "Toronto Blue Jays"
 current_date = "July 18, 2021"
 # storing the player's name in a string 
 player = "Vladimir Guerrero Jr."
-# storing the number of home runs hit to date in an intager
+# storing the number of home runs hit to date in an integer
 home_runs_to_date = 31
-# storing the number of games played so far in an intager
+# storing the number of games played so far in an integer
 games_played = 88
-# storing the total number of games in a full season in an intager
+# storing the total number of games in a full season in an integer
 total_season_games = 162
 # storing the current MLB record for most home runs in a season
 home_run_record = 73
