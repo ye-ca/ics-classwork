@@ -1,0 +1,7 @@
+input("Give me a word!\n")
+input("Give me a second word!\n")
+print()
+input("Great, now your favorite number?\n")
+input("And your second-favorite number...\n")
+print()
+print("Whew! Wasn't that fun?")
