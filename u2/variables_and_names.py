@@ -28,8 +28,8 @@ can_break_record = projected_home_runs > home_run_record
 
 print(f"{player} of the {team}")
 print(f"currently has {home_runs_to_date} home runs as of {current_date}.")
-print(f"the current mlb record for most home runs in a season is {home_run_record}.")
-print(f"with {round(games_remaining)} games remaining and an average of {round(home_runs_per_game, 2)} home runs per game,")
+print(f"The current mlb record for most home runs in a season is {home_run_record}.")
+print(f"With {round(games_remaining)} games remaining and an average of {round(home_runs_per_game, 2)} home runs per game,")
 print(f"it is {can_break_record} that he is on pace to break the record.")
 print(f"{player} is projected to hit {round(projected_home_runs)} home runs this season.")
 

@@ -3,6 +3,7 @@ letter = r"""
 |                                                        ###### |
 |                                                        ###### |
 |                                                        ###### |
+|                                                        ###### |
 |   Ms. Bartiloocini                                     ###### |
 |   St. Robert CHS                                              |
 |   8101 Leslie St                                              |

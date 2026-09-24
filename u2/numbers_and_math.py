@@ -19,7 +19,7 @@ print("If we had 17 apples and 3 people...")
 # this f-string expression prints the floor division of 17 // 3,  which is 5
 print(f"Each person would get {17 // 3} whole apples.")
 # this calculates the expression of 17 mod/remainder 3, which is 2, this works because it splits the string and completes it still with the str() function
-print(f"There would be {17 % 3}  apples remaining.")
+print(f"There would be {17 % 3} apples remaining.")
 print()
 print("If we charged each person $2 each for their 5 apples..")
 # this dot format expression inserts the calculate of 2 * 5 in the curly brackets, which is 10 
