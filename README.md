@@ -15,3 +15,4 @@ u1 means unit 1, unit 2 means unit 2, etc etc.
 - Site pre-loading (makes everything feel very fast)
 - very snappy website
 - when you click on an element it loads the html instantly, then loads in the images and url after
+- example of very good website frontend
