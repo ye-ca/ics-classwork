@@ -3,11 +3,11 @@ letter = r"""
 |                                                        ###### |
 |                                                        ###### |
 |                                                        ###### |
-|		Ms. Bartiloocini                                     ###### |
-|		St. Robert CHS                                              |
-|		8101 Leslie St                                              |
-|		Thornhill, ON                                               |
-|		L3T 7P4                                                     |
+|   Ms. Bartiloocini                                     ###### |
+|   St. Robert CHS                                              |
+|   8101 Leslie St                                              |
+|   Thornhill, ON                                               |
+|   L3T 7P4                                                     |
 |                                                               |
 |                                                               |
 +---------------------------------------------------------------+
