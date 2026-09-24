@@ -1,0 +1,17 @@
+print("Please enter the following information so I can sell it for a profit!")
+print()
+first_name = str(input("First Name: "))
+last_name = str(input("Last Name: "))
+grade = int(input("Grade: "))
+student_id = int(input("Student ID: "))
+login = str(input("Login: "))
+average = float(input("Average: "))
+
+print()
+print("Your information:")
+print(f"\t{"Login:":<10} \t{login:<15}")
+print(f"\t{"ID:":<10} \t{student_id:<15}")
+print(f"\t{"Name:":<10} \t{last_name}, {first_name:<15}")
+print(f"\t{"Grade:":<10} \t{grade:<15}")
+print(f"\t{"Average:":<10} \t{average:.2f} %")
+
