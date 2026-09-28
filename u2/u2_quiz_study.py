@@ -82,5 +82,6 @@ print(text[0])  # Output: "H"
 print(text[7])  # Output: "W"
 print(text[-1])  # Output: "!"
 print(text[-2])  # Output: "d"
+print(text[-3])  # Output: "l"
 print()
 
