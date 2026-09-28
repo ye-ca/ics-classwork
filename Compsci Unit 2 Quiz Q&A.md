@@ -2,9 +2,12 @@
 
 Variables
 - Be able to trace a program using a variable table
-- Know you data types
+- Know your data types
     - What datatype is `x = "23"`
-        - `x = False`
+        - `x = False` Boolean
+        - `y = "55"` String
+        - `z = 25` Int
+        - `t = 2.5` Float
 
 Mathematical operations  
 - Order of operations
