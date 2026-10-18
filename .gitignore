@@ -6,3 +6,5 @@
 
 # everything swap from nano
 *.swp
+
+venv/
