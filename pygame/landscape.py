@@ -1,7 +1,6 @@
-# pygame template
-import math
+# pygame landscape
 import pygame
-
+import math
 
 pygame.display.init() # changed to pygame.display.init() to avoid initializing the audio module that prevented this from closing on my linux computer
 
@@ -402,24 +401,46 @@ path_positions = [
 # ---------------------------
 # Initialize global variables
 
+speed = 1  
+
 
 water_colour = (89, 141, 176)
 grass_colour = (95, 123, 59)
 hillshade_colour = (13, 85, 0)
 path_colour = (173, 148, 89)
 
-sun_position = (640, 0)
+flower_colour = (234, 137, 89)
+flower_size = 20
 
+sun_position = (640, 0)
+moon_x = 2000 # start off screen
+moon_y = 2000 
+
+sky_colour_start = (0, 0, 0) # fill in just to have defined variables, will be changed in the game loop
+sky_colour_end = (0, 0, 0) # same as above
+
+sky1_time_begin = 0
 sky1_colour1 = (253, 244, 150)
 sky1_colour2 = (166, 222, 253)
 
-sky2_time_begin = 120
+sky2_time_begin = 170
 sky2_colour1 = (185, 121, 91)
 sky2_colour2 = (217, 113, 41)
 
-sky3_time_begin = 215
+sky3_time_begin = 270
 sky3_colour1 = (0, 0, 0)
 sky3_colour2 = (0, 0, 0)
+
+sky4_time_begin = 520
+sky4_colour1 = (0, 0, 0)
+sky4_colour2 = (0, 0, 0)
+
+sky5_time_begin = 600
+sky5_colour1 = (253, 244, 150)
+sky5_colour2 = (166, 222, 253)
+
+
+sky_reset = 800 # reset the sky to the beginning of the cycle after this many frames
 
 
 # debug
@@ -436,7 +457,7 @@ def draw_background(start, end):
         r = start[0] + ((end[0] - start[0]) / HEIGHT) * i # first find the delta between start and end, then divide by height of screen to make it a ratio, then multiply by current index to get current value
         g = start[1] + ((end[1] - start[1]) / HEIGHT) * i 
         b = start[2] + ((end[2] - start[2]) / HEIGHT) * i 
-        pygame.draw.line(screen, (r, g, b), (0, i), (WIDTH, i)) # draw a line with the colours, starting at the edge ending at the other edge of the screen
+        pygame.draw.line(screen, (int(r), int(g), int(b)), (0, i), (WIDTH, i)) # draw a line with the colours, starting at the edge ending at the other edge of the screen
         
 
 def draw_sun(position):
@@ -444,9 +465,26 @@ def draw_sun(position):
     pygame.draw.circle(screen, (253, 201, 5), position, 50)
     pygame.draw.circle(screen, (255, 228, 0), position, 30)
     pygame.draw.circle(screen, (245, 235, 156), position, 20)
+
+def draw_moon(x, y):
+    pygame.draw.circle(screen, (255, 255, 255), (x, y), 90)
+    pygame.draw.circle(screen, (197, 209, 234), (x + 45, y - 27), 20)
+    pygame.draw.circle(screen, (197, 209, 234), (x + 50, y + 10), 15)
+    pygame.draw.circle(screen, (197, 209, 234), (x - 10, y - 40), 35)
+    pygame.draw.circle(screen, (197, 209, 234), (x - 40, y + 10), 25)
+    pygame.draw.circle(screen, (197, 209, 234), (x + 76, y + 0), 12)
+    pygame.draw.circle(screen, (197, 209, 234), (x - 50, y - 30), 30)
    
+def change_sky_colour(start, end, total_frames, current_frame):
+    t = current_frame / total_frames
+    r = start[0] + (end[0] - start[0]) * t
+    g = start[1] + (end[1] - start[1]) * t
+    b = start[2] + (end[2] - start[2]) * t
+    return (int(r), int(g), int(b))
 
-
+def draw_flower(x, y, size, colour):
+    pygame.draw.rect(screen, (89, 103, 52), (x - 5, y, 10, 50)) # stem
+    pygame.draw.circle(screen, colour, (x, y), size) # flower
 # ---------------------------
 
 running = True
@@ -461,24 +499,65 @@ while running:
     
     # GAME STATE UPDATES
     # All game math and comparisons happen here
-    if sun_position[1] < -100:
-        frames -= 1
-    elif sun_position[1] > -100:
-        frames += 1
+
+    frames += speed # i named this frames but ive linked this to everything that changes. 
+
+    if frames < sky3_time_begin:  # sun going down, shoo the moon off the screen
+        sun_position = (sun_position[0], frames * 2 - 90)
+        moon_y = 9999
+
+
+    elif frames < sky4_time_begin: # moon going down, shoo the sun off the screen
+        sun_position = (sun_position[0], 9999)
+        moon_x = 640
+        moon_y = (frames - sky3_time_begin) * 2 - 90
+    
+    elif frames < sky5_time_begin: # both moon and sun shooed off the screen
+        sun_position = (sun_position[0], 9999)
+        moon_y = 9999
+
+
+    elif frames < sky_reset: # bring sun down, moon go bye bye 
+        frames = 1
+
+
+    
     print(frames)
-        
     # DRAWING
     
+    # background colour changes based on frames
     if frames < sky2_time_begin:
-        draw_background(sky1_colour1, sky1_colour2)
+        current = frames - sky1_time_begin
+        total   = sky2_time_begin - sky1_time_begin
+        sky_colour_start = change_sky_colour(sky1_colour1, sky2_colour1, total, current)
+        sky_colour_end   = change_sky_colour(sky1_colour2, sky2_colour2, total, current)
+
     elif frames < sky3_time_begin:
-        draw_background(sky2_colour1, sky2_colour2)
-    else:
-        draw_background(sky3_colour1, sky3_colour2)
+        current = frames - sky2_time_begin
+        total   = sky3_time_begin - sky2_time_begin
+        sky_colour_start = change_sky_colour(sky2_colour1, sky3_colour1, total, current)
+        sky_colour_end   = change_sky_colour(sky2_colour2, sky3_colour2, total, current)
+
+    elif frames < sky4_time_begin:
+            current = frames - sky3_time_begin
+            total   = sky4_time_begin - sky3_time_begin
+            sky_colour_start = change_sky_colour(sky3_colour1, sky4_colour1, total, current)
+            sky_colour_end   = change_sky_colour(sky3_colour2, sky4_colour2, total, current)
+
+    elif frames < sky5_time_begin:
+            current = frames - sky4_time_begin
+            total   = sky5_time_begin - sky4_time_begin
+            sky_colour_start = change_sky_colour(sky4_colour1, sky5_colour1, total, current)
+            sky_colour_end   = change_sky_colour(sky4_colour2, sky5_colour2, total, current)
+            
+    # Draw the background
+    draw_background(sky_colour_start, sky_colour_end)
 
     # Draw the sun
     draw_sun(sun_position)
-    sun_position = (sun_position[0], sun_position[1] + 2)
+    draw_moon(moon_x, moon_y)
+    
+
     
 
 
@@ -496,6 +575,15 @@ while running:
 
     # draw path
     pygame.draw.polygon(screen, path_colour, path_positions)
+
+    # draw flowers
+    for i in range(WIDTH - 990):
+        if i % 20 == 0:
+            draw_flower(i, math.sin(i * 0.2) * 140 + 600, flower_size, flower_colour)
+
+    for i in range(600, WIDTH):
+            if i % 50 == 0:
+                draw_flower(i, math.sin(i * 0.2) * 30 + 485, flower_size, flower_colour)
 
 
     # Must be the last two lines

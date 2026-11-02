@@ -3,7 +3,7 @@
 import pygame
 
 
-pygame.init()
+pygame.display.init()
 
 WIDTH = 640
 HEIGHT = 480
@@ -18,6 +18,9 @@ clock = pygame.time.Clock()
 circle_x = 200
 circle_y = 200
 
+
+
+
 # ---------------------------
 
 running = True
@@ -31,10 +34,9 @@ while running:
     # All game math and comparisons happen here
 
     # DRAWING
-    screen.fill((255, 255, 255))  # always the first drawing command
+    screen.fill((0, 0, 0))  # always the first drawing command
 
-    pygame.draw.rect(screen, (53, 94, 59), (200, 100, 150, 50))
-    pygame.draw.circle(screen, "red", (350, 150), 40)
+    draw_moon((100, 100))
 
     # Must be the last two lines
     # of the game loop
