@@ -45,3 +45,15 @@ while True:
         break
 
 print(f"{swimmer2} stops swimming. Total swim time: {swim_time} min.")
+
+# 1.  yes they swim for the same amount of time
+
+# 2.  Gallant swims for 1 minute, thens tops, goofus just stops swimming
+
+# 3. Yes, Gallant checks the temperature first. 
+
+# 4. He just dives in first, then stops swimming. 
+
+# The first while loops checks the water temperature at the beginning, before the code runs. The second while loops runs after the code has already ran, checking after its already ran. 
+
+# 6. The first one is the pre-test loop, and the second one is the post-test loop. 
