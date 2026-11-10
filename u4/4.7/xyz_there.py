@@ -1,9 +1,12 @@
-xyz = "xyz"
-dot_xyz = ".xyz"
+input = input("input: ")
 
-string = input("String: ")
+answer = False 
 
-if xyz in string and dot_xyz not in string:
-	print(True)
-else:
-	print(False)
+for i in range(0, len(input)):
+	if input[i] == "x" and input[i+1] == "y" and input[i+2] == "z" and not input[i-1] == ".":
+		answer = True
+	else:
+		continue
+
+print(answer)
+            
