@@ -12,7 +12,7 @@ screen = pygame.display.set_mode(SIZE)
 clock = pygame.time.Clock()
 
 # ---------------------------
-# Initalize polygon positions
+# polygon positions
 grass_positions = [
     (0, 400),
     (0, 400),
